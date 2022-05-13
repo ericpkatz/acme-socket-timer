@@ -16,6 +16,7 @@ const socketServer = new ws.Server({ server });
 let sockets = [];
 socketServer.on('connection', (socket)=> {
   sockets.push(socket);
+  console.log(sockets.length);
   socket.interval = setInterval(()=> {
     const message = { time: new Date().toLocaleString()}; 
     socket.send(JSON.stringify(message));
