@@ -1,11 +1,13 @@
 <html>
   <head>
     <title>Acme Socket Timer</title>
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
     <h1>Acme Socket Timer</h1>
     <span></span>
     <script>
+      /*
       const url = window.location.origin.replace('http', 'ws');
       console.log(url);
       const socket = new WebSocket(url);
@@ -13,6 +15,11 @@
         const message = JSON.parse(ev.data);
         document.querySelector('span').innerText = message.time;
       });
+     */
+    const socket = io();
+    socket.on('time', (message)=> {
+      document.querySelector('span').innerText = message.time;
+    });
     </script>
   </body>
 </html>
