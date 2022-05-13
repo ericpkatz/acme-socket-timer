@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Acme Socket Timer</title>
+  </head>
+  <body>
+    <h1>Acme Socket Timer</h1>
+    <span></span>
+    <script>
+      const url = window.location.origin.replace('http', 'ws');
+      console.log(url);
+      const socket = new WebSocket(url);
+      socket.addEventListener('message', (ev)=> {
+        const message = JSON.parse(ev.data);
+        document.querySelector('span').innerText = message.time;
+      });
+    </script>
+  </body>
+</html>
